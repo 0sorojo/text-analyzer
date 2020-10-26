@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const ImportFromFileComponent = () => {
-  const [content, setContent] = useState('');
-
+const ImportFromFileComponent = ({ content, setContent }) => {
   let fileReader;
 
   const handleFileRead = (e) => {
