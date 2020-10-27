@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import { FiCornerLeftDown } from 'react-icons/fi';
 
 const ImportFromFileComponent = ({ content, setContent }) => {
   const [error, setError] = useState(false);
+
   let fileReader;
+
+  console.log(error);
 
   const handleFileRead = (e) => {
     const newContent = fileReader.result;
@@ -23,16 +27,21 @@ const ImportFromFileComponent = ({ content, setContent }) => {
 
   return (
     <>
-      <section>
-        <h1>this is where the file text will be shown</h1>
-        <input
-          type='file'
-          id='file'
-          className='input-file'
-          accept='.txt'
-          onChange={(e) => handleFileChosen(e.target.files[0])}
-        />
-        <div>{content}</div>
+      <section className='content-container'>
+        <div className='input-file'>
+          <input
+            type='file'
+            id='file'
+            accept='.txt'
+            onChange={(e) => handleFileChosen(e.target.files[0])}
+          />
+          <FiCornerLeftDown className='icon' />
+          <h2 className='content-title'>
+            this is where the file text will be shown
+          </h2>
+        </div>
+
+        <div className='content'>{content}</div>
       </section>
     </>
   );

@@ -6,11 +6,15 @@ const App = () => {
   const [content, setContent] = useState('');
 
   return (
-    <>
-      <h1>I work</h1>
-      <AutoCompleteSearchBar content={content} />
-      <ImportFromFileComponent content={content} setContent={setContent} />
-    </>
+    <main className='main-container'>
+      <h1 className='title'>
+        <p>Text-Analyzer</p>
+      </h1>
+      <div className='component-container'>
+        <AutoCompleteSearchBar content={content} />
+        <ImportFromFileComponent content={content} setContent={setContent} />
+      </div>
+    </main>
   );
 };
 
