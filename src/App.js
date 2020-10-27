@@ -11,7 +11,7 @@ const App = () => {
         <p>Text-Analyzer</p>
       </h1>
       <div className='component-container'>
-        <AutoCompleteSearchBar content={content} />
+        <AutoCompleteSearchBar content={content} setContent={setContent} />
         <ImportFromFileComponent content={content} setContent={setContent} />
       </div>
     </main>

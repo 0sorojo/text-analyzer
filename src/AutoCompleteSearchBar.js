@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
-const AutoCompleteSearchBar = ({ content }) => {
+const AutoCompleteSearchBar = ({ content, setContent }) => {
   const [search, setSearch] = useState('');
   const [finalArray, setFinalArray] = useState([]);
 
-  const contentArray = content.split(' ').filter((element) => element !== '|');
+  const contentArray = content
+    .split(' ')
+    .filter((element) => String(element).trim());
 
   const createFinalArray = (contentArray) => {
     let orderedArray = new Map();
@@ -32,6 +34,11 @@ const AutoCompleteSearchBar = ({ content }) => {
     return wordsMatched === null ? 0 : wordsMatched.length;
   };
 
+  const noSpaceContent = (content) => {
+    const regex = /[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/g;
+    setContent(content.replace(regex, ''));
+  };
+
   const newContentArray = finalArray
     .filter(
       (word, index) =>
@@ -41,6 +48,7 @@ const AutoCompleteSearchBar = ({ content }) => {
     .slice(0, 26);
 
   useEffect(() => {
+    noSpaceContent(content);
     createFinalArray(contentArray);
     setSearch('');
   }, [content]);
