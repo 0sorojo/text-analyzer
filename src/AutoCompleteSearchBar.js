@@ -35,7 +35,7 @@ const AutoCompleteSearchBar = ({ content }) => {
   const newContentArray = finalArray
     .filter(
       (word, index) =>
-        word.indexOf(search.toLocaleLowerCase()) > -1 &&
+        word.toLowerCase().indexOf(search.toLowerCase()) > -1 &&
         finalArray.indexOf(word) === index
     )
     .slice(0, 26);
