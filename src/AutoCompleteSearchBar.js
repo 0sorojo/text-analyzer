@@ -41,6 +41,10 @@ const AutoCompleteSearchBar = ({ content }) => {
     return wordsMatched === null ? 0 : wordsMatched.length;
   };
 
+  const handleKeyDown = (event) => {
+    console.log(event.keyCode);
+  };
+
   const newContentArray = finalArray
     .filter(
       (word, index) =>
@@ -65,6 +69,10 @@ const AutoCompleteSearchBar = ({ content }) => {
             return (
               <div
                 onClick={() => setSearchTerms(value)}
+                onKeyDown={(event) => {
+                  event.key === 'Enter' && setSearchTerms(value);
+                }}
+                onChange={() => setDisplay(true)}
                 key={index}
                 tabIndex='0'
               >

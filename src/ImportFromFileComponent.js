@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const ImportFromFileComponent = ({ content, setContent }) => {
+  const [error, setError] = useState(false);
   let fileReader;
 
   const handleFileRead = (e) => {
@@ -9,9 +10,15 @@ const ImportFromFileComponent = ({ content, setContent }) => {
   };
 
   const handleFileChosen = (file) => {
-    fileReader = new FileReader();
-    fileReader.onloadend = handleFileRead;
-    fileReader.readAsText(file);
+    try {
+      fileReader = new FileReader();
+      fileReader.onloadend = handleFileRead;
+      fileReader.readAsText(file);
+    } catch (error) {
+      setError(true);
+      setContent('');
+      console.log(error);
+    }
   };
 
   return (
