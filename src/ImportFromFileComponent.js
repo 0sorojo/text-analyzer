@@ -37,7 +37,7 @@ const ImportFromFileComponent = ({ content, setContent }) => {
           />
           <FiCornerLeftDown className='icon' />
           <h2 className='content-title'>
-            upload a .txt file | it contents are displayed below
+            upload a .txt file | its contents are displayed below
           </h2>
         </div>
 
